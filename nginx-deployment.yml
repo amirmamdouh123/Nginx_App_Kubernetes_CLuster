@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+   name: hello-nginx
+
+spec: 
+  replicas: 2
+
+  selector: 
+    matchLabels:
+      nginx: hello
+  
+  template:
+    metadata: 
+       labels:
+          nginx: hello
+            
+    spec:
+       containers:
+       - name:  nginx-container
+         image: amirmamdouh123/amir_say_hello_nginx:latest
+         ports:
+           - containerPort: 80
+         resources:
+           requests:
+             cpu: 100m
+             memory: 100Mi
+           limits:
+             cpu: 150m
+             memory: 150Mi
+         
+         startupProbe:
+              httpGet:
+                path: /
+                port: 80
+              periodSeconds: 2
+              failureThreshold: 30
+                
+         livenessProbe:
+             httpGet:
+               path: /
+               port: 80 
+             periodSeconds: 3
+             failureThreshold: 1
+               
+         readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 3
+                     
+                

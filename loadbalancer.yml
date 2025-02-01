@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata: 
+   name: loadbalancer-nginx
+
+spec: 
+  type: LoadBalancer
+  
+  selector:
+    nginx: hello
+
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP 
