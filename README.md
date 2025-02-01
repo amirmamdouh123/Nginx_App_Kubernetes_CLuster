@@ -39,10 +39,11 @@ Create a local Kubernetes cluster using KinD:
 kind create cluster --name my-cluster
 ```
 
-### Step 4: Load the Docker Image into KinD
+### Step 4: Push Docker image to docker registery 
 Load the Docker image into the KinD cluster:
 ```bash
-kind load docker-image my-nginx-image:latest --name my-cluster
+docker login -u <username> -p <password>
+docker push my-nginx-image:latest
 ```
 
 ### Step 5: Deploy to Kubernetes
