@@ -11,6 +11,7 @@ echo "IMAGE IS PUSHED."
 
 echo "APPLING UPDATES TO KUBERNETES DEPLOYMENT..."
 kubectl apply -f nginx-deployment.yml
+kubectl apply -f loadbalancer.yml
 echo "FINISHED SUCCESSFULLY."
 
 
